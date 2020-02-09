@@ -19,21 +19,20 @@ const downloadFiles = async () => {
     fs.mkdirSync(DIR);
   }
 
-  let response = await axios({
-    url: NASDAQ_URL,
-    method: "GET",
-    responseType: "blob"
-  });
-  fs.writeFileSync(NASDAQ_FILE, response.data);
-
-  response = await axios({
-    url: NYSE_URL,
-    method: "GET",
-    responseType: "blob"
-  });
-  fs.writeFileSync(NYSE_FILE, response.data);
+  downloadFile(NASDAQ_URL, NASDAQ_FILE);
+  downloadFile(NYSE_URL, NYSE_FILE);
 
   console.log("Files downloaded");
+  return [NASDAQ_FILE, NYSE_FILE];
+};
+
+const downloadFile = async (url: string, fileName: string) => {
+  let response = await axios({
+    url: url,
+    method: "GET",
+    responseType: "blob"
+  });
+  fs.writeFileSync(fileName, response.data);
 };
 
 export default downloadFiles;
