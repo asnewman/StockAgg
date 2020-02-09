@@ -4,8 +4,10 @@
   "description": "Downloads a complete list of stocks on the NASDAQ and NYSE",
   "main": "dist/app.js",
   "scripts": {
+    "start": "tsc && node dist/app.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "tsc && node dist/app.js"
+    "compile": "tsc && node dist/app.js",
+    "dev": "./node_modules/nodemon/bin/nodemon.js -e ts  --exec \"npm run compile\""
   },
   "repository": {
     "type": "git",
@@ -26,10 +28,12 @@
   "homepage": "https://github.com/asnewman/stock-list-downloader#readme",
   "devDependencies": {
     "@types/express": "^4.17.2",
+    "nodemon": "^2.0.2",
     "tslint": "^6.0.0",
     "typescript": "^3.7.5"
   },
   "dependencies": {
+    "axios": "^0.19.2",
     "express": "^4.17.1"
   }
 }
