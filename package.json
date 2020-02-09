@@ -1,5 +1,5 @@
 {
-  "name": "stock-list-downloader",
+  "name": "stock-agg",
   "version": "1.0.0",
   "description": "Downloads a complete list of stocks on the NASDAQ and NYSE",
   "main": "dist/app.js",
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/asnewman/stock-list-downloader.git"
+    "url": "git+https://github.com/asnewman/StockAgg.git"
   },
   "keywords": [
     "stock",
@@ -23,9 +23,9 @@
   "author": "Ashley Newman",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/asnewman/stock-list-downloader/issues"
+    "url": "https://github.com/asnewman/StockAgg/issues"
   },
-  "homepage": "https://github.com/asnewman/stock-list-downloader#readme",
+  "homepage": "https://github.com/asnewman/StockAgg#readme",
   "devDependencies": {
     "@types/express": "^4.17.2",
     "nodemon": "^2.0.2",
