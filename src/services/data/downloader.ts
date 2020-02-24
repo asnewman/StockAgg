@@ -1,5 +1,5 @@
-import fs from "fs";
 import axios from "axios";
+import neatCsv from "neat-csv";
 
 // CSV locations of the stock lists
 const NASDAQ_URL =
@@ -7,32 +7,31 @@ const NASDAQ_URL =
 const NYSE_URL =
   "https://old.nasdaq.com/screening/companies-by-name.aspx?letter=0&exchange=nyse&render=download";
 
-const DIR = "csv";
-
-const NASDAQ_FILE = `${DIR}/nasdaq.csv`;
-const NYSE_FILE = `${DIR}/nyse.csv`;
-
 const downloadFiles = async () => {
   console.log("Downloading files");
 
-  if (!fs.existsSync(DIR)) {
-    fs.mkdirSync(DIR);
-  }
-
-  downloadFile(NASDAQ_URL, NASDAQ_FILE);
-  downloadFile(NYSE_URL, NYSE_FILE);
+  const nasdaqData = await downloadFile(NASDAQ_URL);
+  const nyseData = await downloadFile(NYSE_URL);
 
   console.log("Files downloaded");
-  return [NASDAQ_FILE, NYSE_FILE];
+
+  let data = Array<unknown>();
+  data = data.concat(await neatCsv(nasdaqData));
+  data = data.concat(await neatCsv(nyseData));
+
+  console.log("Data extracted");
+
+  return data;
 };
 
-const downloadFile = async (url: string, fileName: string) => {
+const downloadFile = async (url: string) => {
   let response = await axios({
     url: url,
     method: "GET",
     responseType: "blob"
   });
-  fs.writeFileSync(fileName, response.data);
+
+  return response.data;
 };
 
 export default downloadFiles;

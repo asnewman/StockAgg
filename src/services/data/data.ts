@@ -1,16 +1,14 @@
 import downloadFiles from "./downloader";
-import extractCsvs from "./extractor";
 
 const getStocks = async () => {
   console.log("*** Getting stocks ***");
-  const files = await downloadFiles();
-  const data = await extractCsvs(files);
+  const data = await downloadFiles();
   console.log("*** Done getting stocks ***");
 
   console.log("*** Cleaning data ***");
   // Remove empty fields and stardardize field names
-  const cleanData = data.map((stock: Map<string, unknown>) => {
-    const cleanStock = {};
+  const cleanData = data.map((stock: { [key: string]: unknown }) => {
+    const cleanStock: { [key: string]: unknown } = {};
     Object.keys(stock).forEach(key => {
       let newKey = key;
 
