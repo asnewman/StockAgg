@@ -1,6 +1,6 @@
 # StockAgg
 
-This is a AWS Lambda function that grabs NASDAQ and NYSE stock data from NASDAQ and inserts it into an ElasticSearch instance.
+This is a AWS Lambda function that grabs NASDAQ, NYSE and AMEX stock data from nasdaq.com and inserts it into an ElasticSearch instance.
 
 ## Running Locally
 
