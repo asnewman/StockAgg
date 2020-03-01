@@ -12,7 +12,7 @@ const main = async (): Promise<string> => {
     await updateIndex(stockData);
     return "Success";
   } catch (e) {
-    `Failed + ${e}`;
+    return `Failed + ${e}`;
   }
 };
 
