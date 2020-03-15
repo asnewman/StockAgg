@@ -2,6 +2,8 @@
 
 This is a AWS Lambda function that grabs NASDAQ, NYSE and AMEX stock data from nasdaq.com and inserts it into an ElasticSearch instance.
 
+Note: It seems like the NASDAQ is blocking calls from AWS so this currently only works locally.
+
 ## Running Locally
 
 1. Run ElasticSearch (tested on 7.5) and Kibana (for verifying data) running locally on their default ports.
